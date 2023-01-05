@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <style>
+    .highlight {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <h3>Text Highlighter</h3>
+        <form>
+          <div class="form-group">
+            <label for="search-input">Search:</label>
+            <input type="text" class="form-control" id="search-input" placeholder="Enter search term">
+          </div>
+          <button type="button" class="btn btn-primary" onclick="highlightText()">Highlight</button>
+        </form>
+        <hr>
+        <div id="text-content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at diam quis ipsum congue ornare. Nam tincidunt neque non mauris sollicitudin, a mollis diam malesuada. Maecenas auctor neque ut dictum congue. Duis et cursus sem. Integer consectetur nisi id ligula fringilla, et viverra erat aliquet. Fusce aliquet tortor nec est feugiat, in condimentum quam interdum. Vivamus a enim nec dolor luctus dictum. Donec euismod, tortor et efficitur scelerisque, diam lacus efficitur ligula, et feugiat nulla dui eu dui.
+        </div>
+        
+        <script>
+          function highlightText() {
+            // Get the search term and the text content
+            var searchTerm = $('#search-input').val();
+            var textContent = $('#text-content').text();
+        
+            // Split the text content into individual words
+            var words = textContent.split(' ');
+        
+            // Loop through each word and wrap it in a span element if it matches the search term
+            for (var i = 0; i < words.length; i++) {
+              if (words[i] == searchTerm) {
+                words[i] = '<span class="highlight">' + words[i] + '</span>';
+              }
+            }
+        
+            // Join the words back together and update the text content
+            textContent = words.join(' ');
+            $('#text-content').html(textContent);
+          }
+        </script>
+        
